@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Book Club App</title>
+    <link rel="stylesheet" href="/public/style.css">
+</head>
+<body>
+    <h1>📚 Welcome to the Book Club!</h1>
+    <a href="/books/add">➕ Add a Book</a>
+    <a href="/groups">📚 Join a Group</a>
+    <div class="books">
+        <% books.forEach(book => { %>
+            <div class="book">
+                <h2><a href="/books/<%= book._id %>"><%= book.title %></a></h2>
+                <p><strong>Author:</strong> <%= book.author %></p>
+                <p><strong>Genre:</strong> <%= book.genre %></p>
+                <p><strong>Rating:</strong> <%= book.rating %></p>
+            </div>
+        <% }); %>
+    </div>
+</body>
+</html>
