@@ -1,0 +1,11 @@
+const mongoose = require("mongoose");
+
+const groupSchema = new mongoose.Schema({
+    name: String,
+    description: String,
+    members: [String],
+    books: [{ type: mongoose.Schema.Types.ObjectId, ref: "Book" }],
+    createdAt: { type: Date, default: Date.now }
+});
+
+module.exports = mongoose.model("Group", groupSchema);
