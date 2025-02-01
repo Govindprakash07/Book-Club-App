@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><%= book.title %> Details</title>
+</head>
+<body>
+    <h1><%= book.title %></h1>
+    <p><strong>Author:</strong> <%= book.author %></p>
+    <p><strong>Genre:</strong> <%= book.genre %></p>
+    <p><strong>Description:</strong> <%= book.description %></p>
+    <p><strong>Rating:</strong> <%= book.rating %></p>
+    <a href="/books">⬅️ Back to Books</a>
+</body>
+</html>
