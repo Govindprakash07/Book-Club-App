@@ -1,0 +1,32 @@
+const express = require("express");
+const Group = require("../models/Group");
+const Book = require("../models/Book");
+
+const router = express.Router();
+
+// Show All Groups
+router.get("/", async (req, res) => {
+    const groups = await Group.find();
+    res.render("group", { groups });
+});
+
+// Create Group Page
+router.get("/create", (req, res) => {
+    res.render("createGroup");
+});
+
+// Handle Creating a Group
+router.post("/create", async (req, res) => {
+    const { name, description } = req.body;
+    const newGroup = new Group({ name, description, members: [] });
+    await newGroup.save();
+    res.redirect("/groups");
+});
+
+// View Group Details
+router.get("/:id", async (req, res) => {
+    const group = await Group.findById(req.params.id).populate("books");
+    res.render("groupDetails", { group });
+});
+
+module.exports = router;
