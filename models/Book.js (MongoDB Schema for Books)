@@ -1,0 +1,17 @@
+const mongoose = require("mongoose");
+
+const bookSchema = new mongoose.Schema({
+    title: String,
+    author: String,
+    genre: String,
+    description: String,
+    rating: { type: Number, min: 0, max: 5 },
+    reviews: [{
+        user: String,
+        reviewText: String,
+        rating: { type: Number, min: 0, max: 5 }
+    }],
+    dateAdded: { type: Date, default: Date.now }
+});
+
+module.exports = mongoose.model("Book", bookSchema);
